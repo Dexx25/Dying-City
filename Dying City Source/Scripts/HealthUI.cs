@@ -14,6 +14,6 @@ public class HealthUI : MonoBehaviour
         if(Health < 0f){
             Health = 0f;
         }
-        HealthBar.fillAmount = Health;
+        HealthBar.fillAmount = Health;//fillamount range from 0-1 so if it <0 (maybe 0.5) we set it to 0 for sure
     }
 }

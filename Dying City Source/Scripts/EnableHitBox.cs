@@ -6,13 +6,13 @@ using UnityEngine.UI;
 
 public class EnableHitBox : MonoBehaviour
 {
+    private AudioClip Whoosh, fall, groundHit, Dead, EnemyDead,PlayerDeath;
     public GameObject LeftHandHitBox,RightHandHitBox,
     LeftFootHitBox,RightFootHitBox;
     public float StandUpDelay= 2f;
     private CharacterAnimation Anim;
     private AudioSource AudioS;
-    [SerializeField]
-    private AudioClip Whoosh, fall, groundHit, Dead, EnemyDead,PlayerDeath;
+    [SerializeField]    
     private EnemyMovement EnemyM;
     private string sceneName;
 
@@ -150,13 +150,13 @@ public class EnableHitBox : MonoBehaviour
     {
         Destroy(transform.parent.gameObject, 2f);
         if (sceneName == "Endless"){
-            sk.Kills++;
+            sk.Kills++;//here where problem start
             Kills.text = "Kills: " + sk.Kills.ToString();
             Invoke("EndlessSpawn",1f);
         }
     }   
 
     void EndlessSpawn(){
-        EnemyWaves.instance.Endless();
+        EnemyWaves.instance.Endless();//for exclusive endless mode
     }
 }

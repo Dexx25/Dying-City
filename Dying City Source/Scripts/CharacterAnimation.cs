@@ -33,9 +33,6 @@ public class CharacterAnimation : MonoBehaviour
         if (Attack == 2){
             Anim.SetTrigger("Attack2");
         }
-        if (Attack == 3){
-            Anim.SetTrigger("Attack3");
-        }
         
     }
     // public void EnemyIdle(){

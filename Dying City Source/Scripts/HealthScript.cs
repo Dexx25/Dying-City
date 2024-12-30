@@ -7,13 +7,10 @@ public class HealthScript : MonoBehaviour
     private CharacterAnimation Anim;
     private EnemyMovement EnemyMove;
     private bool CharacterDead;
-    public  bool IsAPlayer;
-    public bool IsABoss = false;
+    public  bool IsAPlayer;//for player
+    public bool IsABoss = false;//for boss
     private GameObject Enemy;
-    private HealthUI HpBar;
-
-    
-    
+    private HealthUI HpBar;    
     private string CurrentsceneName;
     void Awake(){
         Anim = GetComponentInChildren<CharacterAnimation>();
@@ -36,7 +33,7 @@ public class HealthScript : MonoBehaviour
         }
         Health -= Damage;
         if (IsAPlayer){
-            HpBar.DisplayHP(Health);
+            HpBar.DisplayHP(Health);// update healthbar whenever recieve damage
         }
         if (Health <= 0f){
             Anim.Death();
@@ -47,7 +44,7 @@ public class HealthScript : MonoBehaviour
             return;
         }
         
-        if (!IsAPlayer&&!IsABoss){
+        if (!IsAPlayer&&!IsABoss){//enemy
             if (KnockDown){
                 if (Random.Range(0,2)>0){
                     Anim.KnockDown();
@@ -58,13 +55,13 @@ public class HealthScript : MonoBehaviour
                 }
             }
         }
-        if (!IsAPlayer && IsABoss){
+        if (!IsAPlayer && IsABoss){//boss
             if (KnockDown){
                 if (Random.Range(0,7)>5){
                     Anim.KnockDown();
                 }
             }else{
-                if (Random.Range(0,3)>5){
+                if (Random.Range(0,3)>1){
                     Anim.hit();
                 }
             }
